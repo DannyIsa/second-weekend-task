@@ -1,11 +1,11 @@
   
-/* body {
+ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 table {
     margin: 100px auto;
 }
- th {
+.topic {
    padding: 20px 10px;
    border-radius: 5%;
    background-color: crimson;
@@ -17,6 +17,3 @@ td {
     border-radius: 5%;
     font-size: 1.4em;
 }
-tr th {
-    background-color: crimson;
-} */
