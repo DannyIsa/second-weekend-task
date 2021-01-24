@@ -68,11 +68,11 @@ function hoursSum(task){    //sum of the hour range
 
 function hourColor(x){    //gives different colors to different hour range
     if (x < 9){
-        return "style = 'background-color: lightblue'"
+        return "lightblue"
     }else if (x < 11){
-        return "style = 'background-color: blue'"
+        return "blue"
     }else {
-        return "style = 'background-color: darkblue'"
+        return "darkblue"
     }
 }
 
@@ -89,11 +89,11 @@ function calcPercent(task){              //percentage of tasks completed
 function taskColor(x){    //gives different colors to different percentage of tasks completed
     
     if (x < 60){
-        return "style = 'background-color: lightgreen'"
+        return "lightgreen"
     }else if (x < 90){
-        return "style = 'background-color: greenyellow'"
+        return "greenyellow"
     }else {
-        return "style = 'background-color: green'"
+        return "green"
     }
 }
 
@@ -105,31 +105,34 @@ const rowHeadings = document.createElement('tr');
 table.appendChild(rowHeadings);
 // const header = document.createElement('th')
 // header.innerText = 'Topic'
-rowHeadings.innerHTML = `<th>Topic</th>
-                <th>Started at</th>
-                <th>Finished at</th>
-                <th>Total time</th>
-                <th>Tasks given</th>
-                <th>Tasks finished</th>
-                <th>Percentage of tasks done</th>`;
+rowHeadings.innerHTML = `<th class='topic'>Topic</th>
+                        <th class='topic'>Started at</th>
+                        <th class='topic'>Finished at</th>
+                        <th class='topic'>Total time</th>
+                        <th class='topic'>Tasks given</th>
+                        <th class='topic'>Tasks finished</th>
+                        <th class='topic'>Percentage of tasks done</th>`;
 
 for (const task of main){
 
     const row = document.createElement('tr');
     const topic = document.createElement('td');
     topic.innerText = task.topic;
+    topic.classList.add('topic');
     const startedAt = document.createElement('td');
     startedAt.innerText = task.startedAt.toLocaleTimeString();
     const finishedAt = document.createElement('td');
     finishedAt.innerText = task.finishedAt.toLocaleTimeString();
     const totalHours = document.createElement('td');
     totalHours.innerText = task.totalHours;
+    totalHours.style.backgroundColor = hourColor(task.totalHours);
     const tasksGiven = document.createElement('td');
     tasksGiven.innerText = task.tasksGiven;
     const tasksFinished = document.createElement('td');
     tasksFinished.innerText = task.tasksFinished;
     const percentageOfTasksDone = document.createElement('td');
     percentageOfTasksDone.innerText = task.percentageOfTasksDone;
+    percentageOfTasksDone.style.backgroundColor = taskColor(task.percentageOfTasksDone);
     row.append(topic, startedAt, finishedAt, totalHours, tasksGiven, tasksFinished, percentageOfTasksDone);
     table.appendChild(row);
 }
